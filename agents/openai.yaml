@@ -1,7 +1,7 @@
 interface:
   display_name: "菲比啾比即梦视频"
-  short_description: "专注菲比啾比风与即梦热门二创视频提示词优化生成能力"
-  default_prompt: "使用 $feibi-jiubi-jimeng-video 帮我把这个角色二创点子优化成适合即梦的视频提示词。"
+  short_description: "专注参考图控角的即梦15秒环境脑暴与视频提示词优化能力"
+  default_prompt: "使用 $feibi-jiubi-jimeng-video 基于我上传的参考图，先帮我脑暴几个不同环境的15秒视频点子，再把其中一个扩成即梦视频提示词。"
 
 policy:
   allow_implicit_invocation: true
