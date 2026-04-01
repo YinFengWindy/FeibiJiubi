@@ -1,110 +1,67 @@
 # feibi-jiubi-jimeng-video
 
-面向即梦视频模式的提示词优化与题材头脑风暴技能。
+一个面向即梦视频模式的 Codex Skill。
 
-适用于用户会上传参考图控制角色形象时，将环境迁移类点子、已有草稿或失败案例，重写为更适合即梦的 15 秒视频提示词；也适合围绕菲比啾比题材做环境创意脑暴。
+它专门处理这类需求：用户会上传参考图控角，希望把角色放进 `现实教室 / 房间 / 便利店 / 咖啡店 / 校园` 等环境里，做成以 `可爱动作、表情反应、镜头抓点` 为核心卖点的 `15 秒短视频`。重点不是剧情，而是动作是否一眼能懂、表情是否够甜、镜头是否能把记忆点拍清楚。
 
-## 能力概览
+## 适合做什么
 
-- 环境设计
-- 角色与场景的接触关系设计
-- 15 秒视频节奏拆分
-- 即梦视频提示词优化
-- 菲比啾比题材脑暴
-- 失败案例重写与修复
+- 把一句话点子扩成即梦可用的视频提示词
+- 重写“像图片、不像视频、没动作卖点”的失败草稿
+- 先脑暴一波可爱动作方向，再扩成成品提示词
+- 把环境从“背景名词”改成真正能承托动作的现实场景
 
-## 仓库结构
+## Skill 特点
 
-```text
-.
-├── README.md
-└── feibi-jiubi-jimeng-video/
-    ├── SKILL.md
-    ├── agents/openai.yaml
-    └── references/
-```
+- 默认按 `参考图控角` 使用，不重复堆角色外形
+- 默认按 `15 秒` 节奏设计
+- 优先做 `单动作主线 + 单情绪中心 + 单镜头逻辑`
+- 环境只做承托，不默认走剧情
+- 特别适合 `现实教室` 这类真实短视频感场景
 
-安装时请复制整个 `feibi-jiubi-jimeng-video` 文件夹，不要只复制 `SKILL.md`。
+## 安装
 
-## 安装方法
+把仓库里的 `feibijiubi` 整个文件夹复制到 Codex 的技能目录：
 
-### 1. 克隆或下载仓库
-
-```bash
-git clone <your-github-repo-url>
-cd <repo-folder>
-```
-
-也可以直接在 GitHub 页面下载 ZIP，解压后进入仓库目录。
-
-### 2. 复制技能目录到 Codex 技能路径
-
-#### Windows PowerShell
+### Windows PowerShell
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE/.codex/skills" | Out-Null
-Copy-Item -LiteralPath ".\feibi-jiubi-jimeng-video" -Destination "$env:USERPROFILE/.codex/skills/feibi-jiubi-jimeng-video" -Recurse -Force
+Copy-Item -LiteralPath ".\feibijiubi" -Destination "$env:USERPROFILE/.codex/skills/feibijiubi" -Recurse -Force
 ```
 
-#### macOS / Linux
+### macOS / Linux
 
 ```bash
 mkdir -p ~/.codex/skills
-cp -R ./feibi-jiubi-jimeng-video ~/.codex/skills/feibi-jiubi-jimeng-video
+cp -R ./feibijiubi ~/.codex/skills/feibijiubi
 ```
 
-### 3. 确认安装结果
-
-安装完成后，目标目录应类似于：
+目标目录应为：
 
 ```text
-~/.codex/skills/feibi-jiubi-jimeng-video/
+~/.codex/skills/feibijiubi/
 ├── SKILL.md
 ├── agents/openai.yaml
 └── references/
 ```
 
-## 更新方法
-
-当仓库内容更新后，重新拉取并覆盖技能目录即可。
-
-#### Windows PowerShell
-
-```powershell
-git pull
-Copy-Item -LiteralPath ".\feibi-jiubi-jimeng-video" -Destination "$env:USERPROFILE/.codex/skills/feibi-jiubi-jimeng-video" -Recurse -Force
-```
-
-#### macOS / Linux
-
-```bash
-git pull
-cp -R ./feibi-jiubi-jimeng-video ~/.codex/skills/feibi-jiubi-jimeng-video
-```
-
 ## 使用示例
 
-安装完成后，可以直接这样触发：
-
 ```text
-[$feibi-jiubi-jimeng-video](~/.codex/skills/feibi-jiubi-jimeng-video/SKILL.md) 头脑风暴
+使用 $feibi-jiubi-jimeng-video 基于我上传的参考图，给我几个以可爱动作为卖点的15秒视频方向，不要走剧情。
 ```
 
-也可以直接用自然语言描述需求：
-
 ```text
-使用 $feibi-jiubi-jimeng-video 基于我上传的参考图，脑暴几个偏可爱、卖萌、轻甜气质的 15 秒环境点子。
+使用 $feibi-jiubi-jimeng-video 把这条草稿重写成现实教室背景的即梦视频提示词，重点强化歪头、眨眼、甜笑这些动作记忆点。
 ```
 
-## 适合的使用场景
+```text
+使用 $feibi-jiubi-jimeng-video 给我一个现实教室跳舞版，动作简单、短视频感强、镜头别太乱。
+```
 
-- 想把参考图角色放进教室、便利店、咖啡店、街道、异世界等环境
-- 已有提示词草稿，但结果“像图片、不像视频、没短视频感”
-- 想先脑暴几个可爱、卖萌、轻甜的题材方向
-- 想把失败案例重写成更稳定的即梦 15 秒视频提示词
+## 注意
 
-## 注意事项
-
-- 技能目录名必须保持为 `feibi-jiubi-jimeng-video`
-- 复制时请保留 `agents/` 与 `references/` 子目录
-- 如果仓库后续新增参考文件，更新时建议整包覆盖
+- 技能目录名保持为 `feibijiubi`
+- 复制时保留 `agents/` 和 `references/`
+- 更新时建议整包覆盖
